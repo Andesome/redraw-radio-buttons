@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta viewpoint="device-width">
+	<title>重绘单选框</title>
+</head>
+<style type="text/css">
+	.ling_input_row{
+		position: relative;
+   	 	height: 40px
+
+	}
+	.ling_input_row input[type=radio]{
+		position: absolute;
+		top: 0;
+		left: 40px;
+    	width: 20px;
+   	 	height: 20px;
+   	 	z-index: 9;
+   	 	appearance:none;
+   	 	-webkit-appearance:none;
+   	 	background:transparent;
+	}
+	.ling_input_row input[type=radio]:before{
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		width: 20px;
+		height: 20px;
+		border-radius: 15px;
+		border: 1px solid #666;
+		z-index: 8;
+		opacity: 1;
+	}
+	.ling_input_row input[type=radio].checked:before{
+		background:url("images/checked.png") 0 0 no-repeat;
+		background-size: contain;
+	}
+</style>
+<body>
+
+<form action="res.php">
+	<div class="ling_input_row">
+		<label for="username">姓名:</label><input type="radio" name="ling-radio"><br />
+	</div>
+	<div class="ling_input_row">
+		<label for="username">年龄:</label><input type="radio" name="ling-radio"><br />
+	</div>
+	<div class="ling_input_row">
+		<label for="username">年龄:</label><input type="radio" name="ling-radio"><br />
+	</div>
+
+	<input type="submit" value="提交">
+</form>
+	
+
+
+
+	<script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+		
+		var $radio = $(".ling_input_row input[type=radio]");
+
+		$radio.click(function(){
+			console.log($(this).is(":checked"));
+			$radio.not(":checked").removeClass("checked");
+			$(this).addClass("checked");
+		})
+	</script>
+</body>
+</html>
